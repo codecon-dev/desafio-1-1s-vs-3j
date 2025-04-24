@@ -1,0 +1,18 @@
+{
+    "name": "desafio/danilo",
+    "description": "Desafio no canal codecon 1 dev senior vs 3 dev junior",
+    "autoload": {
+        "psr-4": {
+            "Desafio\\Danilo\\": "src/",
+            "Controllers\\": "src/controllers/",
+            "Models\\": "src/models/",
+            "Utils\\": "src/Utils/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Danilo Franco"
+        }
+    ],
+    "require": {}
+}

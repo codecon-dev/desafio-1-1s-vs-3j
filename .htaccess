@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^$ resultadoDanilo/index.php [L]
+
+# Caso não seja arquivo nem pasta, encaminha tudo para resultadoDanilo/index.php com parâmetro url
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ resultadoDanilo/index.php?url=$1 [QSA,L]

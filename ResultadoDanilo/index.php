@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 //controladores
 use Controllers\FileController;
+use Controllers\UsuariosController;
+
 //regras de negócio
 
 // Obter a URL amigável após a reescrita
@@ -24,7 +26,10 @@ if (!empty($url)) {
     switch ($recurso) {
         case 'file':            
             $controller = new FileController();
-            break;        
+            break;  
+        case 'usuarios':
+            $controller = new UsuariosController();
+            break;      
         default:
             $controller = null;
             break;

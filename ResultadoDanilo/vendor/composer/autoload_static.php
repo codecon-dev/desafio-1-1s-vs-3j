@@ -11,6 +11,10 @@ class ComposerStaticInit8cfb5862ccea69eacfb96ebd97c8d74f
         array (
             'Utils\\' => 6,
         ),
+        'R' => 
+        array (
+            'Rn\\' => 3,
+        ),
         'M' => 
         array (
             'Models\\' => 7,
@@ -29,6 +33,10 @@ class ComposerStaticInit8cfb5862ccea69eacfb96ebd97c8d74f
         'Utils\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/Utils',
+        ),
+        'Rn\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/rn',
         ),
         'Models\\' => 
         array (

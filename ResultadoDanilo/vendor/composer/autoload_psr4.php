@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Utils\\' => array($baseDir . '/src/Utils'),
+    'Rn\\' => array($baseDir . '/src/rn'),
     'Models\\' => array($baseDir . '/src/models'),
     'Desafio\\Danilo\\' => array($baseDir . '/src'),
     'Controllers\\' => array($baseDir . '/src/controllers'),

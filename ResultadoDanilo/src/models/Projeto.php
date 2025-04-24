@@ -1,6 +1,6 @@
 <?php
 
-namespace models;
+namespace Models;
 
 
 class Projeto{
@@ -26,6 +26,12 @@ class Projeto{
 
     function getConcluido(){
         return $this->concluido;
+    }
+
+    //toString
+    function toString(){
+        return
+        "<br>Nome: ".$this->getNome()." Concluído: ".$this->getConcluido();
     }
 
 }

@@ -6,7 +6,8 @@
             "Desafio\\Danilo\\": "src/",
             "Controllers\\": "src/controllers/",
             "Models\\": "src/models/",
-            "Utils\\": "src/Utils/"
+            "Utils\\": "src/Utils/",
+            "Rn\\": "src/rn/"
         }
     },
     "authors": [

@@ -1,6 +1,6 @@
 <?php
 
-namespace models;
+namespace Models;
 
 class Log{
     private $data;

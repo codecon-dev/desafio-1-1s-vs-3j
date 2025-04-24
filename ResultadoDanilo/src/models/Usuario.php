@@ -1,8 +1,8 @@
 <?php
 
-namespace models;
+namespace Models;
 
-class Usuario{
+class Usuario {
     private $id;
     private $nome;
     private $idade;
@@ -12,7 +12,7 @@ class Usuario{
     private $equipe = [];
     private $logs = [];
 
-    function __construct($id, $nome, $idade, $score, $ativo, $pais, $equipe = [], $logs = []){
+    function __construct($id, $nome, $idade, $score, $ativo, $pais, $equipe, $logs = []){
         $this->setIdUsuario($id);
         $this->setNome($nome);
         $this->setIdade($idade);
@@ -87,6 +87,32 @@ class Usuario{
 
     function getLogs(){
         return $this->logs;
+    }
+
+    //toString
+    function toString(){       
+        
+        return 
+        "<br>ID usuario: ".$this->getIdUsuario().
+        "<br>Nome: ".$this->getNome().
+        "<br>Idade: ".$this->getIdade().
+        "<br>Score: ".$this->getScore().
+        "<br>Ativo: ".$this->getAtivo().
+        "<br>País: ".$this->getPais()."<br>";        
+    }
+
+    //toArray
+    function toArray(){
+        return [
+            'id' => $this->id,
+            'nome' => $this->nome,
+            'idade' => $this->idade,
+            'score' => $this->score,
+            'ativo' => $this->ativo,
+            'pais' => $this->pais,
+            'equipe' => $this->equipe,
+            'logs' => $this->logs
+        ];
     }
 
 }

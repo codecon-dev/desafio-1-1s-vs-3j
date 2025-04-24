@@ -2,22 +2,27 @@ const express = require("express");
 const multer = require("multer");
 const bodyparser = require("body-parser");
 const fs = require('fs');
+const path = require('path');
 
 const getDateNow = require("./src/utils/getDateNow");
-const { error } = require("console");
+
+const uploadPath = path.join(__dirname, 'uploads');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./");
+    cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
-    cb(null, getDateNow() + "-" + file.originalname);
+    const timestamp = new Date().getTime();
+    cb(null, `${timestamp}-${file.originalname}`);
   },
 });
 
 let data;
 
-const upload = multer({ storage });
+const upload = multer({
+  storage
+});
 
 const app = express();
 const port = 3000;
@@ -33,7 +38,7 @@ app.post("/users", upload.single("arquivo"), (req, res) => {
   let inicio = Date.now();
 
   if (!req.file) {
-    res.status(400).json({ error: "Sem arquivo upado" });
+    return res.status(400).json({ error: "Sem arquivo upado" });
   }
   try {
     console.log(req.file);

@@ -23,7 +23,7 @@ class RnUsuarios{
             // 1. Projetos da equipe
             if (isset($item['equipe']['projetos']) && is_array($item['equipe']['projetos'])) {
                 foreach ($item['equipe']['projetos'] as $proj) {
-                    $projeto = new Projeto($proj['nome'], $proj['concluido']);                    
+                    $projeto = new Projeto($proj['nome'], $proj['concluido']);                   
 
                     $listaProjetos[] = $projeto;
                 }
@@ -61,6 +61,54 @@ class RnUsuarios{
     
         return $listaUsuarios;
     }
+
+
+    function quantidadeSuperUsuariosPorPais() {
+        $usuariosAgrupados = $this->agruparUsuariosPorPais();
+
+        $quantidadePorPais = [];
+
+        foreach($usuariosAgrupados as $item){
+            $pais = $item['pais'];
+            
+            $quantidade = count($item['usuarios']);
+
+            $quantidadePorPais[] = [
+                'pais' => $pais,
+                'quantidade' => $quantidade
+            ];
+        }
+
+        return $quantidadePorPais;
+
+    }
+
+    function agruparUsuariosPorPais(){
+        $json = JsonServices::lerUltimoJson();    
+        $usuariosPorPais = [];    
+        
+        foreach ($json as $usuario) {
+            $pais = $usuario['pais'];
+    
+            if (!isset($usuariosPorPais[$pais])) {
+                $usuariosPorPais[$pais] = [];
+            }
+    
+            $usuariosPorPais[$pais][] = $usuario;
+        }    
+        
+        $listaUsuariosAgrupados = [];
+    
+        foreach ($usuariosPorPais as $pais => $usuarios) {
+            $listaUsuariosAgrupados[] = [
+                'pais' => $pais,
+                'usuarios' => $usuarios
+            ];
+        }
+    
+        return $listaUsuariosAgrupados;
+    }
+    
     
 
 }

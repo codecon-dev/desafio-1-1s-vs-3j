@@ -108,6 +108,54 @@ class RnUsuarios{
     
         return $listaUsuariosAgrupados;
     }
+
+    function agruparPorEquipe(){
+        $json = JsonServices::lerUltimoJson();        
+        $relatorioFinal = [];        
+
+        foreach ($json as $usuario) {
+            $equipe = $usuario['equipe']['nome'];   
+    
+            if (!isset($relatorioFinal[$equipe])) {
+                $relatorioFinal[$equipe] = [
+                    'equipe' => $equipe,
+                    'quantidade' => 0,
+                    'lideres' => 1,
+                    'projetosConcluidos' => 1,
+                    'ativos' => 0, 
+                    'percentualMembros' => 0
+                ];
+            }
+
+            $relatorioFinal[$equipe]['quantidade']++;
+
+            if (!empty($usuario['ativo'])) {
+                $relatorioFinal[$equipe]['ativos']++;
+            }
+
+            if($usuario['equipe']['lider'] == true){
+                $relatorioFinal[$equipe]['lideres']++;
+            }    
+            
+            foreach($usuario['equipe']['projetos'] as $projeto){
+                if($projeto['concluido']){
+                    $relatorioFinal[$equipe]['projetosConcluidos']++;
+                }
+            }            
+        }
+
+        foreach ($relatorioFinal as &$equipe) {
+            if ($equipe['quantidade'] > 0) {
+                $equipe['percentualMembros'] = round(($equipe['ativos'] / $equipe['quantidade']) * 100, 2);
+            }
+            unset($equipe['ativos']); // remove o campo auxiliar
+        }       
+
+
+
+
+        return $relatorioFinal;
+    }
     
     
 

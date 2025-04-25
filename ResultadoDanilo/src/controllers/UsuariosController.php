@@ -46,6 +46,30 @@ class UsuariosController{
         HttpResponses::ok($requisition);
     }
 
+    function teamInsights(){
+        $rnUsuarios = new RnUsuarios();
+        TimeControlServices::startReq();
+
+        $body = [
+            'Usuarios por equipe' => $rnUsuarios->agruparPorEquipe()
+        ];
+
+        TimeControlServices::finalReq();
+
+        $requisition = [
+            'Time stamp' => TimeControlServices::timeStamp(),
+            'Tempo de processamento: ' => TimeControlServices::processTime(),
+            'Body: ' => $body
+        ];
+
+        if(!empty($body)){
+            HttpResponses::ok($requisition);
+        } else {
+            HttpResponses::notFound("Não existem dados para serem analisados.");
+        }      
+        
+    }
+
 }
 
 ?>

@@ -2,9 +2,14 @@
 
 namespace Controllers;
 
+use Utils\HttpResponses;
+use Utils\TimeControlServices;
+
 class EvaluationController{
 
     public function avaliar(){
+        TimeControlServices::startReq();
+        
         $testes = [   
             'GET /superUsers' => 'http://localhost/desafio-1-1s-vs-3j/usuarios/superusers',        
             'GET /top-countries' => 'http://localhost/desafio-1-1s-vs-3j/usuarios/topCountries',
@@ -35,11 +40,16 @@ class EvaluationController{
             ];
         }
 
-        header('Content-Type: application/json');
-        echo json_encode([
-            'avaliadoEm' => date('Y-m-d H:i:s'),
-            'resultado' => $relatorio
-        ], JSON_PRETTY_PRINT);
+        TimeControlServices::finalReq();
+
+        $body = [
+            'Time stamp' => TimeControlServices::timeStamp(),
+            'Tempo de processamento' => TimeControlServices::processTime(),
+            'resultado' =>$relatorio
+        ];
+
+        HttpResponses::ok($body);
+
     }
 
 }

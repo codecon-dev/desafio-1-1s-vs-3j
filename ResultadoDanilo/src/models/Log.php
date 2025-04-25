@@ -2,7 +2,12 @@
 
 namespace Models;
 
-class Log{
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use JsonSerializable;
+
+class Log implements JsonSerializable{
+
     private $data;
     private $acao;
 
@@ -26,6 +31,14 @@ class Log{
 
     function getAcao(){
         return $this->acao;
+    }
+
+    //Método json serializable
+    public function jsonSerialize() :mixed{
+        return [
+            'data' => $this->getData(),
+            'acao' => $this->getAcao()
+        ];
     }
 }
 

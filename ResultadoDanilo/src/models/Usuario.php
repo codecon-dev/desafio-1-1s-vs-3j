@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Usuario {
+use JsonSerializable;
+
+class Usuario implements JsonSerializable{
     private $id;
     private $nome;
     private $idade;
@@ -101,8 +103,8 @@ class Usuario {
         "<br>País: ".$this->getPais()."<br>";        
     }
 
-    //toArray
-    function toArray(){
+    //jsonSerializable
+    public function jsonSerialize(): mixed {
         return [
             'id' => $this->id,
             'nome' => $this->nome,

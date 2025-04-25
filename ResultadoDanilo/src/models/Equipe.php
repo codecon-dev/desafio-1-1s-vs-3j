@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Equipe{
+use JsonSerializable;
+
+class Equipe implements JsonSerializable{
     private $nome;
     private $lider;
     private $projetos = [];
@@ -10,6 +12,7 @@ class Equipe{
     function __construct($nome, $lider, $projetos = []){
         $this->setNome($nome);
         $this->setLider($lider);
+        $this->setProjetos($projetos);
     }
 
     //setters
@@ -47,6 +50,15 @@ class Equipe{
         "<br><strong>Projetos</strong>";
         //iteração sobre a lista projetos
         
+    }
+
+    //jsonSerializable
+    public function jsonSerialize(): mixed {
+        return [
+            'nome' => $this->getNome(),
+            'lider' => $this->getLider(),
+            'projetos' => $this->getProjetos()
+        ];
     }
 
 

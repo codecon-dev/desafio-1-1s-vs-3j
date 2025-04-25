@@ -18,15 +18,16 @@ class RnUsuarios{
     
         foreach ($json as $item) {
             $listaProjetos = [];
-            $listaLogs = [];
+            $listaLogs = [];            
     
             // 1. Projetos da equipe
             if (isset($item['equipe']['projetos']) && is_array($item['equipe']['projetos'])) {
                 foreach ($item['equipe']['projetos'] as $proj) {
-                    $projeto = new Projeto($proj['nome'], $proj['concluido']);
+                    $projeto = new Projeto($proj['nome'], $proj['concluido']);                    
+
                     $listaProjetos[] = $projeto;
                 }
-            }
+            }            
     
             // 2. Equipe
             $equipeData = $item['equipe'];
@@ -54,7 +55,7 @@ class RnUsuarios{
     
             // 5. Filtro (score >= 900 e ativo)
             if ($usuario->getScore() >= 900 && $usuario->getAtivo()) {
-                $listaUsuarios[] = $usuario->toArray();
+                $listaUsuarios[] = $usuario;
             }
         }
     

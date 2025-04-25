@@ -6,7 +6,20 @@ class HttpResponses{
 
     public static function json($statusCode, $body = [], $headers = []){
         http_response_code($statusCode);
-        header('Content-Type: application/json');
+
+        header('Content-Type: application/json; charset=utf-8');    
+        
+        header('Cache-Control: no-cache, no-store, must-revalidate');
+        header('Pragma: no-cache');
+        header('Expires: 0');        
+        
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type, Authorization');        
+        
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: DENY');
+        header('X-XSS-Protection: 1; mode=block');
 
         foreach($headers as $key => $value){
             header("$key: $value");

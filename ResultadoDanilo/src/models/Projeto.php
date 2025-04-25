@@ -2,8 +2,9 @@
 
 namespace Models;
 
+use JsonSerializable;
 
-class Projeto{
+class Projeto implements JsonSerializable{
     private $nome;
     private $concluido;
 
@@ -32,6 +33,14 @@ class Projeto{
     function toString(){
         return
         "<br>Nome: ".$this->getNome()." Concluído: ".$this->getConcluido();
+    }
+
+    //jsonSerializable
+    public function jsonSerialize(): mixed{
+        return [
+            'nome' => $this->getNome(),
+            'concluido' => $this->getConcluido()            
+        ];
     }
 
 }

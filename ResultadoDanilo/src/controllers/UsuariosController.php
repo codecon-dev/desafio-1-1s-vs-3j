@@ -6,7 +6,6 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Utils\HttpResponses;
 use Rn\RnUsuarios;
-use Models\Usuario;
 use Utils\TimeControlServices;
 
 class UsuariosController{
@@ -14,16 +13,21 @@ class UsuariosController{
     function superUsers(){
         $rnUsuarios = new RnUsuarios();
         TimeControlServices::startReq();
-        $json = $rnUsuarios->superUsers();
+        $body = $rnUsuarios->superUsers();
         TimeControlServices::finalReq();
 
         $requisition = [
             'Time stamp: ' => TimeControlServices::timeStamp(),
             'Tempo de processamento: ' =>TimeControlServices::processTime(),
-            'Body: ' => $json
+            'Body: ' => $body
         ];  
 
-        HttpResponses::ok($requisition);        
+        if(!empty($body)){
+            HttpResponses::ok($requisition);
+        } else {
+            HttpResponses::notFound("Não existem dados para serem analisados");
+        }
+                
     }
 
     function topCountries(){
@@ -43,7 +47,12 @@ class UsuariosController{
             'Body: ' => $body
         ];
 
-        HttpResponses::ok($requisition);
+        if(!empty($body)){
+            HttpResponses::ok($requisition);
+        } else {
+            HttpResponses::notFound("Não existem dados para serem analisados");
+        }
+
     }
 
     function teamInsights(){

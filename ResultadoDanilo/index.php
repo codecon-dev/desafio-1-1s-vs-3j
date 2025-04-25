@@ -3,6 +3,8 @@
 require __DIR__ . '/vendor/autoload.php';
 
 //controladores
+
+use Controllers\EvaluationController;
 use Controllers\FileController;
 use Controllers\LoginController;
 use Controllers\UsuariosController;
@@ -15,14 +17,11 @@ $url = isset($_GET['url']) ? $_GET['url'] : '';
 if (!empty($url)) {
     $url = rtrim($url, '/');
     $url_parts = explode('/', $url);
-
-    // Primeiro parâmetro é o recurso (ex: usuario, veiculo)
+    
     $recurso = isset($url_parts[0]) ? $url_parts[0] : '';
-
-    // Segundo parâmetro é a ação (ex: cadastrarUsuario, listarVeiculos)
+    
     $acao = isset($url_parts[1]) ? $url_parts[1] : 'index';
-
-    // Instanciar o controlador e a RN necessária
+    
     switch ($recurso) {
         case 'file':            
             $controller = new FileController();
@@ -32,7 +31,10 @@ if (!empty($url)) {
             break;  
         case 'login':
             $controller = new LoginController();
-            break;    
+            break; 
+        case 'evaluation':
+            $controller = new EvaluationController();
+            break;
         default:
             $controller = null;
             break;

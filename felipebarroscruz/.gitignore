@@ -1,0 +1,16 @@
+# === Logs and Temp Files ===
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+
+# === OS Generated ===
+.DS_Store
+Thumbs.db
+
+# === IDEs and Editors ===
+.vscode/
+.idea/
+*.iml

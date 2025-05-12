@@ -1,0 +1,130 @@
+type: collection.insomnia.rest/5.0
+name: Desafio
+meta:
+  id: wrk_9f705702b4e146c2ae9f4b43244a7d36
+  created: 1747018766624
+  modified: 1747018766624
+collection:
+  - url: http://localhost:3333/users
+    name: /users
+    meta:
+      id: req_947c5dd667e4406fb747db5d0bac877a
+      created: 1747018774461
+      modified: 1747021513674
+      isPrivate: false
+      sortKey: -1747018774461
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_5b69f2fb9db9452fb4ad49dff534ed36
+          name: arquivo
+          disabled: false
+          type: file
+          fileName: /Users/theuszastro/Downloads/usuarios.json
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/superusers
+    name: /superusers
+    meta:
+      id: req_5f6336b89e564c95a2b043759c679770
+      created: 1747019938243
+      modified: 1747019953620
+      isPrivate: false
+      sortKey: -1747019938243
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/top-countries
+    name: /top-countries
+    meta:
+      id: req_5fa4ef4e94484832bd2b789174674cfd
+      created: 1747019963477
+      modified: 1747019972386
+      isPrivate: false
+      sortKey: -1747019356352
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/team-insights
+    name: /team-insights
+    meta:
+      id: req_044e0ea2a68849668af07e12e91fd105
+      created: 1747020971096
+      modified: 1747020972701
+      isPrivate: false
+      sortKey: -1747019647297.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3333/active-users-per-day
+    name: /active-users-per-day
+    meta:
+      id: req_84dcd38570a64fb39b3e159472b56789
+      created: 1747021449905
+      modified: 1747021453080
+      isPrivate: false
+      sortKey: -1747019501824.75
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_97f344075bf1f0cfed57adfae19af68612e5ee2d
+    created: 1747018766627
+    modified: 1747018766627
+environments:
+  name: Base Environment
+  meta:
+    id: env_97f344075bf1f0cfed57adfae19af68612e5ee2d
+    created: 1747018766626
+    modified: 1747018766626
+    isPrivate: false

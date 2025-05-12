@@ -88,9 +88,12 @@ function parse(data) {
 		active_percentage: ((item.active_percentage / item.total_members) * 100).toFixed(2) + '%',
 	}));
 
-	responses['/top-countries'] = Object.entries(countries).reduce((acc, item) => {
-		acc.push({ country: item[0], total: item[1] });
+	responses['/top-countries'] = Object.entries(countries)
+		.reduce((acc, item) => {
+			acc.push({ country: item[0], total: item[1] });
 
-		return acc;
-	}, []);
+			return acc;
+		}, [])
+		.sort((a, b) => b.total - a.total)
+		.slice(0, 5);
 }

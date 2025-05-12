@@ -1,0 +1,10 @@
+{
+  "name": "theuszastro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "busboy": "^1.6.0",
+    "express": "^5.1.0"
+  }
+}

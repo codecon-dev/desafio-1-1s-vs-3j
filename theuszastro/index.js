@@ -55,6 +55,8 @@ function parse(data) {
 	const logins = {};
 
 	for (let { active, country, team, logs } of data) {
+		countries[country] ? (countries[country] += 1) : (countries[country] = 1);
+
 		if (teams[team.name]) {
 			teams[team.name].total_members += 1;
 			teams[team.name].completed_projects += team.projects.filter(c => c.completed).length;
@@ -70,18 +72,8 @@ function parse(data) {
 			};
 		}
 
-		if (countries[country]) {
-			countries[country] += 1;
-		} else {
-			countries[country] = 1;
-		}
-
 		for (let { date } of logs.filter(c => c.action == 'login')) {
-			if (logins[date]) {
-				logins[date] += 1;
-			} else {
-				logins[date] = 1;
-			}
+			logins[date] ? (logins[date] += 1) : (logins[date] = 1);
 		}
 	}
 

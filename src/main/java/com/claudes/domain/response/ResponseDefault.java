@@ -2,7 +2,7 @@ package com.claudes.domain.response;
 
 public class ResponseDefault {
     private String timestamp;
-    private int execution_time_ms;
+    private long execution_time_ms;
 
     public ResponseDefault() {
     }
@@ -20,11 +20,11 @@ public class ResponseDefault {
         this.timestamp = timestamp;
     }
 
-    public int getExecution_time_ms() {
+    public long getExecution_time_ms() {
         return execution_time_ms;
     }
 
-    public void setExecution_time_ms(int execution_time_ms) {
+    public void setExecution_time_ms(long execution_time_ms) {
         this.execution_time_ms = execution_time_ms;
     }
 }

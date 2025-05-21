@@ -30,7 +30,6 @@ public class UserRequest {
     }
 
 
-
     public UUID getId() {
         return id;
     }
